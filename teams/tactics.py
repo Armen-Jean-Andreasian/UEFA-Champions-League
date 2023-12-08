@@ -29,12 +29,13 @@ class LineUp:
         formations_catalog = FormationsCatalog()
         if self.desired_formation in formations_catalog.available_formations:
             self.line_up = formations_catalog.available_formations[self.desired_formation]
+            return self.line_up
         else:
             raise ValueError(formations_catalog.__str__())
 
 
 if __name__ == '__main__':
     team = ""
-    d = '4-3-2'
+    d = '4-3-3'
     l = LineUp(team, d)
-    l.get_formation()
+    print(l.get_formation())
