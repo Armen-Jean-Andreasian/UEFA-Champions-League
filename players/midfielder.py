@@ -2,47 +2,53 @@ from players.player import Player
 
 
 class Midfielder(Player):
-    def __init__(self, name, nationality, club, dob, position):
-        super().__init__(name=name, nationality=nationality, club=club, date_of_birth=dob, position=position)
+    def __init__(self, name, national_team_obj, club, dob, position):
+        super().__init__(name=name, national_team_obj=national_team_obj, position=position, club_obj=club,
+                         date_of_birth=dob)
 
     def __str__(self):
         return super().__str__()
 
 
 class DefenciveMidfielder(Midfielder):
-    def __init__(self, name, nationality, club, dob):
-        position = "DMF"
-        super().__init__(name, nationality, club, dob, position)
+    position = "DMF"
+
+    def __init__(self, name, national_team_obj, club, dob):
+        super().__init__(name, national_team_obj, club, dob, self.position)
 
 
 class LeftMidfielder(Midfielder):
-    def __init__(self, name, nationality, club, dob):
-        position = "LM"
-        super().__init__(name, nationality, club, dob, position)
+    position = "LM"
+
+    def __init__(self, name, national_team_obj, club, dob):
+        super().__init__(name, national_team_obj, club, dob, self.position)
 
 
 class RightMidfielder(Midfielder):
-    def __init__(self, name, nationality, club, dob):
-        position = "RM"
-        super().__init__(name, nationality, club, dob, position)
+    position = "RM"
+
+    def __init__(self, name, national_team_obj, club, dob):
+        super().__init__(name, national_team_obj, club, dob, self.position)
 
 
 class CentralMidfielder(Midfielder):
-    def __init__(self, name, nationality, club, dob):
-        position = "CAM"
-        super().__init__(name, nationality, club, dob, position)
+    position = "CM"
+
+    def __init__(self, name, national_team_obj, club, dob):
+        super().__init__(name, national_team_obj, club, dob, self.position)
 
 
 class CentralAttackingMidfielder(Midfielder):
-    def __init__(self, name, nationality, club, dob):
-        position = "CAM"
-        super().__init__(name, nationality, club, dob, position)
+    position = "CAM"
+
+    def __init__(self, name, national_team_obj, club, dob):
+        super().__init__(name, national_team_obj, club, dob, self.position)
 
 
 if __name__ == '__main__':
     d = CentralAttackingMidfielder(
         name="Modric",
-        nationality="Croatia",
+        national_team_obj="Croatia",
         club="Real Madrid",
         dob=""
     )

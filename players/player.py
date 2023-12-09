@@ -4,18 +4,29 @@ from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
     from teams.nationals.team import NationalTeam
+    from teams import NationalTeam, FootballClub
 
 
 class Player(ABC):
     player_instances = []
 
-    def __init__(self, name, national_team_obj: NationalTeam, position, club, date_of_birth):
+    def __init__(self, name: str, national_team_obj: NationalTeam, club_obj: FootballClub,
+                 position=None, date_of_birth=None):
+        # given
         self.name = name
-        self.country = national_team_obj.country_name
+        self.national_team_obj = national_team_obj
+        self.club_obj = club_obj
+        if date_of_birth: self.date_of_birth = date_of_birth
+
+        # lifted
         self.position = position
-        self.club = club
-        self.date_of_birth = date_of_birth
+
+        # attributes
+
+        self.country_name = national_team_obj.country_name
+        self.club_name = club_obj.club_name
+
         Player.player_instances.append(self)
 
     def __str__(self):
-        return f"{self.name}, {self.country}, {self.position}"
+        return f"{self.name}, {self.national_team_obj.country_name}/{self.club_obj.club_name}, {self.position}"
