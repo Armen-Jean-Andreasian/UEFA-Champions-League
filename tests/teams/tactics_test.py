@@ -22,6 +22,5 @@ class TestingMethods(unittest.TestCase):
         self.assertEqual(current_lineup, desired_lineup)
 
 
-
 if __name__ == '__main__':
     unittest.main()
